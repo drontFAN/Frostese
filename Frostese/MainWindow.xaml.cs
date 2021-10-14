@@ -257,6 +257,18 @@ namespace Frostese
             }
 
         }
+
+        private void OnFontWeightSelection(object sender, SelectionChangedEventArgs e)
+        {
+            var cbItem = ((ComboBox)sender).SelectedItem as ComboBoxItem;
+            draggablePopup.txtToShow.FontWeight = cbItem.FontWeight;
+        }
+
+        private void OnFontSelection(object sender, SelectionChangedEventArgs e)
+        {
+            var cbItem = ((ComboBox)sender).SelectedItem as ComboBoxItem;
+            draggablePopup.txtToShow.FontFamily = cbItem.FontFamily;
+        }
     }
 }
 

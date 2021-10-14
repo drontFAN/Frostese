@@ -62,8 +62,53 @@
             <TextBlock HorizontalAlignment="Center" Text="Border" />
             <xctk:ColorPicker Name="cp_border" HorizontalAlignment="Center" Width="50" DisplayColorAndName="True" SelectedColorChanged="cp_Border" AvailableColorsSortingMode="HueSaturationBrightness" ></xctk:ColorPicker>
         </StackPanel>
-        
-        
+        <StackPanel Margin="4,4,10,4" Height="40" Grid.Column="1"  Grid.Row="4">
+            <TextBlock HorizontalAlignment="Center" Text="Font" />
+            <ComboBox x:Name="comboBoxTextFont" SelectionChanged="OnFontSelection">
+                <ComboBoxItem Content="Arial" FontFamily="Arial"/>
+                <ComboBoxItem Content="Arial Black" FontFamily="Arial Black"/>
+                <ComboBoxItem Content="Calibri" FontFamily="Calibri"/>
+                <ComboBoxItem Content="Cambria" FontFamily="Cambria"/>
+                <ComboBoxItem Content="Courier New" FontFamily="Courier New"/>
+                <ComboBoxItem Content="Comic Sans MS" FontFamily="Comic Sans MS"/>
+                <ComboBoxItem Content="Cordia New" FontFamily="Cordia New"/>
+                <ComboBoxItem Content="Georgia" FontFamily="Georgia"/>
+                <ComboBoxItem Content="Impact" FontFamily="Impact"/>
+                <ComboBoxItem Content="Lucida Sans" FontFamily="Lucida Sans"/>
+                <ComboBoxItem Content="Helvetica" FontFamily="Helvetica"/>
+                <ComboBoxItem Content="MS Gothic" FontFamily="MS Gothic"/>
+                <ComboBoxItem Content="Tahoma" FontFamily="Tahoma"/>
+                <ComboBoxItem Content="Times New Roman" FontFamily="Times New Roman"/>
+                <ComboBoxItem Content="Trebuchet MS" FontFamily="Trebuchet MS"/>
+                <ComboBoxItem Content="Verdana" FontFamily="Verdana"/>
+                <ComboBoxItem Content="Webdings" FontFamily="Webdings"/>
+                <ComboBoxItem Content="Wingdings" FontFamily="Wingdings"/>
+                
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Margin="4,4,10,4" Height="40" Grid.Column="0"  Grid.Row="4">
+            <TextBlock HorizontalAlignment="Center" Text="FontWeight" />
+            <ComboBox x:Name="comboBoxTextWeight" SelectionChanged="OnFontWeightSelection">
+                <ComboBoxItem Content="Black" FontWeight="Black"/>
+                <ComboBoxItem Content="Bold" FontWeight="Bold"/>
+                <ComboBoxItem Content="DemiBold" FontWeight="DemiBold"/>
+                <ComboBoxItem Content="ExtraBlack" FontWeight="ExtraBlack"/>
+                <ComboBoxItem Content="ExtraBold" FontWeight="ExtraBold"/>
+                <ComboBoxItem Content="ExtraLight" FontWeight="ExtraLight"/>
+                <ComboBoxItem Content="Heavy" FontWeight="Heavy"/>
+                <ComboBoxItem Content="Light" FontWeight="Light"/>
+                <ComboBoxItem Content="Medium" FontWeight="Medium"/>
+                <ComboBoxItem Content="Normal" FontWeight="Normal"/>
+                <ComboBoxItem Content="Regular" FontWeight="Regular"/>
+                <ComboBoxItem Content="SemiBold" FontWeight="SemiBold"/>
+                <ComboBoxItem Content="Thin" FontWeight="Thin"/>
+                <ComboBoxItem Content="UltraBlack" FontWeight="UltraBlack"/>
+                <ComboBoxItem Content="UltraBold" FontWeight="UltraBold"/>
+                <ComboBoxItem Content="UltraLight" FontWeight="UltraLight"/>
+            </ComboBox>
+        </StackPanel>
+
+
         <Button Margin="4,4,10,4" Height="30" Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="4" HorizontalAlignment="Right" Width="50" Content="&#128172;" Click="onClickChatBtn"></Button>
         <DockPanel Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="5">
             <TextBox x:Name="txtToSpeak" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="10,10,10,10" Height="30"></TextBox>
