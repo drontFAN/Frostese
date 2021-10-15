@@ -40,6 +40,9 @@ namespace Frostese
         private int _lowRandVal = 0;
         private int _highRandVal = 0;
 
+        List<StartStop> _questionPitchList;
+        private int _currSpeakPos = 0;
+
         public MainWindow()
         {
             _soundPlayer = new SoundPlayer();
@@ -58,6 +61,7 @@ namespace Frostese
         }
         private void onSpeakBtnClick(object sender, RoutedEventArgs e)
         {
+            _currSpeakPos = 0;
             draggablePopup.txtToShow.Text = "";
             this.txtToShow.Text = "";
             _playbackSpeed = (this.playBackSpeed.Value);
@@ -72,6 +76,19 @@ namespace Frostese
 
             if (isSpeaking)
                 StopTimer();
+
+            var words = this.txtToSpeak.Text.Split(' ');
+            _questionPitchList = new List<StartStop>();
+            var currentCharacterPos = 0;
+            foreach(var word in words)
+            {
+                if (word.Contains("?"))
+                {
+                    _questionPitchList.Add(new StartStop(currentCharacterPos, currentCharacterPos + word.Length + 1));
+                }
+                currentCharacterPos += word.Length + 1;
+            }
+
             StartSpeaking();
         }
 
@@ -176,6 +193,14 @@ namespace Frostese
                 byte[] b = streamToByteArray(s);
                 //int SampleRate = BitConverter.ToInt32(b, 24);
                 double newSR = _playbackSpeed + random.NextDouble()/4;
+                foreach(var startStop in _questionPitchList)
+                {
+                    if(currPosition >= startStop.Start && currPosition <= startStop.Stop)
+                    {
+                        newSR *= 1.2;
+                        break;
+                    }
+                }
                 Console.WriteLine(newSR);
                 var intSR = (int)Math.Round(newSR, 0);
                 Array.Copy(BitConverter.GetBytes(intSR), 0, b, 24, 4);
@@ -184,7 +209,7 @@ namespace Frostese
                 Console.WriteLine(aTimer.Interval);
                 _soundPlayer = new SoundPlayer(new MemoryStream(b));
                 _soundPlayer.Play();
-                
+                _currSpeakPos++;
 
 
             }
@@ -282,6 +307,18 @@ namespace Frostese
             
             _lowRandVal = (int)this.randDelaySlider.LowerValue;
         }
+    }
+
+    public struct StartStop
+    {
+        public StartStop(int start, int stop)
+        {
+            Start = start;
+            Stop = stop;
+        }
+
+        public int Start { get; }
+        public int Stop { get; }
     }
 }
 
