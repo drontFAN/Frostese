@@ -274,12 +274,13 @@ namespace Frostese
 
         private void randDelaySlider_HigherValueChanged(object sender, RoutedEventArgs e)
         {
-            _lowRandVal = (int)this.randDelaySlider.LowerValue;
+            _highRandVal = (int)this.randDelaySlider.HigherValue;
         }
 
         private void randDelaySlider_LowerValueChanged(object sender, RoutedEventArgs e)
         {
-            _highRandVal = (int)this.randDelaySlider.HigherValue;
+            
+            _lowRandVal = (int)this.randDelaySlider.LowerValue;
         }
     }
 }
