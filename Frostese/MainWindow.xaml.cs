@@ -37,6 +37,8 @@ namespace Frostese
         Random random;
         private bool darkModeBool = false;
         DraggablePopup draggablePopup;
+        private int _lowRandVal = 0;
+        private int _highRandVal = 0;
 
         public MainWindow()
         {
@@ -173,16 +175,18 @@ namespace Frostese
                 }
                 byte[] b = streamToByteArray(s);
                 //int SampleRate = BitConverter.ToInt32(b, 24);
-                double newSR =  _playbackSpeed + random.NextDouble()/4;
+                double newSR = _playbackSpeed + random.NextDouble()/4;
                 Console.WriteLine(newSR);
                 var intSR = (int)Math.Round(newSR, 0);
                 Array.Copy(BitConverter.GetBytes(intSR), 0, b, 24, 4);
 
-
-
+                aTimer.Interval = _tempo+ random.Next(_lowRandVal, _highRandVal);
+                Console.WriteLine(aTimer.Interval);
                 _soundPlayer = new SoundPlayer(new MemoryStream(b));
                 _soundPlayer.Play();
                 
+
+
             }
             catch(Exception e)
             {
@@ -266,6 +270,16 @@ namespace Frostese
         {
             var cbItem = ((ComboBox)sender).SelectedItem as ComboBoxItem;
             draggablePopup.txtToShow.FontFamily = cbItem.FontFamily;
+        }
+
+        private void randDelaySlider_HigherValueChanged(object sender, RoutedEventArgs e)
+        {
+            _lowRandVal = (int)this.randDelaySlider.LowerValue;
+        }
+
+        private void randDelaySlider_LowerValueChanged(object sender, RoutedEventArgs e)
+        {
+            _highRandVal = (int)this.randDelaySlider.HigherValue;
         }
     }
 }

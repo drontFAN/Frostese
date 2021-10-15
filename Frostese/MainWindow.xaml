@@ -26,6 +26,7 @@
             <RowDefinition Height="10"/>
             <RowDefinition Height="20"/>
             <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
@@ -50,19 +51,26 @@
             <TextBlock Width="120" Margin="5,0,5,0">Character delay (ms)</TextBlock>
             <Slider x:Name="tempo" Minimum="10" Maximum="500" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="2" ></Slider>
         </DockPanel>
-        <StackPanel Margin="4,4,10,4" Height="40" Grid.Column="4"  Grid.Row="4">
+        <DockPanel Grid.Row="4" Grid.ColumnSpan="6" Margin="15,0,15,0">
+            <TextBlock Width="120" Margin="5,0,5,0">Random delay (ms)</TextBlock>
+            <xctk:RangeSlider x:Name="randDelaySlider" HigherValueChanged="randDelaySlider_HigherValueChanged" LowerValueChanged="randDelaySlider_LowerValueChanged" Minimum="0" Maximum="500" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="2"/>
+
+        </DockPanel>
+        
+        
+        <StackPanel Margin="4,4,10,4" Height="40" Grid.Column="4"  Grid.Row="5">
             <TextBlock HorizontalAlignment="Center" Text="Background" />
             <xctk:ColorPicker Name="cp_bg"  HorizontalAlignment="Center" Width="50" DisplayColorAndName="True" SelectedColorChanged="cp_Background" AvailableColorsSortingMode="HueSaturationBrightness" ></xctk:ColorPicker>
         </StackPanel>
-        <StackPanel Margin="4,4,10,4" Height="40" Grid.Column="3"  Grid.Row="4">
+        <StackPanel Margin="4,4,10,4" Height="40" Grid.Column="3"  Grid.Row="5">
             <TextBlock HorizontalAlignment="Center" Text="Text" />
             <xctk:ColorPicker Name="cp_txt" HorizontalAlignment="Center" Width="50" DisplayColorAndName="True" SelectedColorChanged="cp_Text" AvailableColorsSortingMode="HueSaturationBrightness" ></xctk:ColorPicker>
         </StackPanel>
-        <StackPanel Margin="4,4,10,4" Height="40" Grid.Column="2"  Grid.Row="4">
+        <StackPanel Margin="4,4,10,4" Height="40" Grid.Column="2"  Grid.Row="5">
             <TextBlock HorizontalAlignment="Center" Text="Border" />
             <xctk:ColorPicker Name="cp_border" HorizontalAlignment="Center" Width="50" DisplayColorAndName="True" SelectedColorChanged="cp_Border" AvailableColorsSortingMode="HueSaturationBrightness" ></xctk:ColorPicker>
         </StackPanel>
-        <StackPanel Margin="4,4,10,4" Height="40" Grid.Column="1"  Grid.Row="4">
+        <StackPanel Margin="4,4,10,4" Height="40" Grid.Column="1"  Grid.Row="5">
             <TextBlock HorizontalAlignment="Center" Text="Font" />
             <ComboBox x:Name="comboBoxTextFont" SelectionChanged="OnFontSelection">
                 <ComboBoxItem Content="Arial" FontFamily="Arial"/>
@@ -86,7 +94,7 @@
                 
             </ComboBox>
         </StackPanel>
-        <StackPanel Margin="4,4,10,4" Height="40" Grid.Column="0"  Grid.Row="4">
+        <StackPanel Margin="4,4,10,4" Height="40" Grid.Column="0"  Grid.Row="5">
             <TextBlock HorizontalAlignment="Center" Text="FontWeight" />
             <ComboBox x:Name="comboBoxTextWeight" SelectionChanged="OnFontWeightSelection">
                 <ComboBoxItem Content="Black" FontWeight="Black"/>
@@ -109,12 +117,12 @@
         </StackPanel>
 
 
-        <Button Margin="4,4,10,4" Height="30" Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="4" HorizontalAlignment="Right" Width="50" Content="&#128172;" Click="onClickChatBtn"></Button>
-        <DockPanel Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="5">
+        <Button Margin="4,4,10,4" Height="30" Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="5" HorizontalAlignment="Right" Width="50" Content="&#128172;" Click="onClickChatBtn"></Button>
+        <DockPanel Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="6">
             <TextBox x:Name="txtToSpeak" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="10,10,10,10" Height="30"></TextBox>
         </DockPanel>
-        <Button Margin="4,4,10,4" Height="30" Grid.Column="4" Grid.ColumnSpan="1" Grid.Row="5" HorizontalAlignment="Right" Width="50" Content="&#x1f507;" Click="stopSpeak"></Button>
-        <Button Margin="4,4,10,4" Height="30" Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="5" HorizontalAlignment="Right" Width="50" Content="&#128264;" Click="onSpeakBtnClick"></Button>
+        <Button Margin="4,4,10,4" Height="30" Grid.Column="4" Grid.ColumnSpan="1" Grid.Row="6" HorizontalAlignment="Right" Width="50" Content="&#x1f507;" Click="stopSpeak"></Button>
+        <Button Margin="4,4,10,4" Height="30" Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="6" HorizontalAlignment="Right" Width="50" Content="&#128264;" Click="onSpeakBtnClick"></Button>
     </Grid>
 </Window>
     
