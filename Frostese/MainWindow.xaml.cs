@@ -58,8 +58,8 @@ namespace Frostese
         {
             draggablePopup.txtToShow.Text = "";
             this.txtToShow.Text = "";
-            _playbackSpeed = (this.playBackSpeed.Value/2);
-            _tempo = this.tempo.Value * 20;
+            _playbackSpeed = (this.playBackSpeed.Value);
+            _tempo = this.tempo.Value;
             if (_tempo == 0)
                 _tempo = 100;
 
@@ -172,10 +172,8 @@ namespace Frostese
                     return;
                 }
                 byte[] b = streamToByteArray(s);
-                int SampleRate = BitConverter.ToInt32(b, 24);
-                double newSR = SampleRate * ( 1+ random.NextDouble() / 4);
-                if (_playbackSpeed != 0)
-                    newSR = SampleRate * (_playbackSpeed + random.NextDouble()/4);
+                //int SampleRate = BitConverter.ToInt32(b, 24);
+                double newSR =  _playbackSpeed + random.NextDouble()/4;
                 Console.WriteLine(newSR);
                 var intSR = (int)Math.Round(newSR, 0);
                 Array.Copy(BitConverter.GetBytes(intSR), 0, b, 24, 4);

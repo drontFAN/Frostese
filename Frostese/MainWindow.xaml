@@ -43,12 +43,12 @@
 
         <Separator  Margin="10,0,10,0" Background="Black" Height="2" Grid.Row="1" Grid.ColumnSpan="10"/>
         <DockPanel Grid.Row="2" Grid.ColumnSpan="6" Margin="15,0,15,0">
-            <TextBlock Width="100" Margin="5,0,5,0">Character speed</TextBlock>
-            <Slider x:Name="playBackSpeed" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="2"></Slider>
+            <TextBlock Width="120" Margin="5,0,5,0">Character speed (hz)</TextBlock>
+            <Slider x:Name="playBackSpeed" Minimum="2000" Maximum="150000" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="2"></Slider>
         </DockPanel>
         <DockPanel Grid.Row="3" Grid.ColumnSpan="6" Margin="15,0,15,0">
-            <TextBlock Width="100" Margin="5,0,5,0">Character delay</TextBlock>
-            <Slider x:Name="tempo" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="2" ></Slider>
+            <TextBlock Width="120" Margin="5,0,5,0">Character delay (ms)</TextBlock>
+            <Slider x:Name="tempo" Minimum="10" Maximum="500" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="2" ></Slider>
         </DockPanel>
         <StackPanel Margin="4,4,10,4" Height="40" Grid.Column="4"  Grid.Row="4">
             <TextBlock HorizontalAlignment="Center" Text="Background" />
