@@ -179,8 +179,8 @@ namespace Frostese
                 Console.WriteLine(newSR);
                 var intSR = (int)Math.Round(newSR, 0);
                 Array.Copy(BitConverter.GetBytes(intSR), 0, b, 24, 4);
-
-                aTimer.Interval = _tempo+ random.Next(_lowRandVal, _highRandVal);
+                var interval = random.Next(_lowRandVal, _highRandVal);
+                aTimer.Interval = _tempo + interval;
                 Console.WriteLine(aTimer.Interval);
                 _soundPlayer = new SoundPlayer(new MemoryStream(b));
                 _soundPlayer.Play();
